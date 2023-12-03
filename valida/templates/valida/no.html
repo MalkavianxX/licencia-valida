@@ -1,1 +1,91 @@
-no
+<!doctype html>
+<html lang="en">
+  <head>
+    {% load static %}
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Validacion de licencia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
+  <body>
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900;500&display=swap');
+    .fnt_monse{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 28px;
+        font-weight: revert;
+    }
+    body{
+        background-image: url("{% static 'valida/img/fondo.png' %}");
+        background-repeat: no-repeat;
+        
+    }
+</style>
+
+    <div class="container">
+        <div class="row justify-content-center" style="margin-top: 12vh;">
+            <div class="col-12 text-center">
+                <h1 class="fnt_monse">LICENCIA NO VÁLIDA / NO VALID LICENSE</h1>
+            </div>
+        </div>
+        <div class="row justify-content-center" style="margin-top: 8vh;">
+            <div class="col-lg-7 col-12 " style="background-color: #5c2134; color: white;border-top-left-radius: 10px;border-top-right-radius: 10px;">
+                <div class="row d-flex justify-content-between">
+                    <div class="col-3">
+                        <img src="{% static 'valida/img/escudo.png' %}"  width="220px" alt="">
+                    </div>
+                    <div class="col-3 text-end">
+                        <img width="120px" src="{% static 'valida/img/mexico.webp' %}"  alt="">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7 col-12 text-center" style="background-color: #ba9f68; color: white;">
+                <p style="font-weight: 500; font-family: 'Montserrat', sans-serif"> Secretaría de Hacienda <br>
+                <strong class="fs-6">LICENCIA DE CONDUCIR</strong>  <br>
+                DRIVER'S LICENSE INFORMATION</p>
+            </div>
+            <div class="col-lg-7 col-12 shadow">
+                <div class="row">
+                    <div class="col-6">
+                        <p>NÚMERO DE LICENCIA / LICENSENUMBER:
+                        <strong >{{ data.folio }}</strong></p>
+                       <p>NOMBRE / NAME: <br>
+                        <strong style="text-transform: uppercase;">{{ data.datos_nombres }} {{ data.datos_apellidos }}</strong>
+
+                    </div>
+                    <div class="col-6 text-end">
+                        <div class="row">
+                            <div class="col-12">
+                                <p>TIPO DE LICENCIA / CLASS: <br>
+                                <strong >{{ data.lic_tipo }}</strong></p>
+                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <p>EXPEDIDA / ISSUED: <br>
+                            <strong>{{ data.lic_expedicion }}</strong>
+                       </p>
+                    </div>
+                    <div class="col-6 text-end">
+                        <p>VENCE / EXPIRES ON: <br>
+                            <strong>{{ data.valido }}</strong>
+                       </p>
+                    </div>
+                </div>
+            </div>
+
+    
+   
+        </div>
+        
+        <p>{{data}}</p>
+        <p>{{data.error}}</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>

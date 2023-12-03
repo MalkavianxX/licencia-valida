@@ -13,4 +13,5 @@ def get_licencia(request,XWOPSLT,FFTWRPTO):
         print(data)
         return render(request, 'valida/ok.html',{'data':data})
     else:
-        return render(request, 'valida/no.html')
+        data = response.json()
+        return render(request, 'valida/no.html',{'data':data})
