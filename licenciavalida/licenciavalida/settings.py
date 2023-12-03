@@ -78,13 +78,14 @@ WSGI_APPLICATION = 'licenciavalida.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'validaweb',
-        'USER': 'postgres',
+        'NAME': 'licenciasweb',
+        'USER': 'root',
         'PASSWORD': 'Rmpv54321',
-        'HOST': 'localhost',  # Puedes cambiar esto según tu configuración de PostgreSQL
-        'PORT': '5432',       # Puerto predeterminado de PostgreSQL
+        'HOST': 'postgresql-156478-0.cloudclusters.net',  # Puedes cambiar esto según tu configuración de PostgreSQL
+        'PORT': '19998',       # Puerto predeterminado de PostgreSQL
     }
 }
+
 
 
 # Password validation
