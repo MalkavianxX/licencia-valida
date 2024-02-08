@@ -5,7 +5,7 @@ def view_start(request):
     return render(request, 'valida/valida.html')
 
 def get_licencia(request,XWOPSLT,FFTWRPTO):
-    url = 'http://100.24.66.1/licenciasvalidar_licencia/' + str(XWOPSLT) +'/'+str("CUALQUIERCOSA")
+    url = 'https://licenapp.cloud/licenciasvalidar_licencia/' + str(XWOPSLT) +'/'+str("CUALQUIERCOSA")
     response = requests.get(url)
     if response.status_code == 200:
         data = response.json()
