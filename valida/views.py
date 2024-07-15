@@ -5,7 +5,7 @@ def view_start(request):
     return render(request, 'valida/valida.html')
 
 def get_licencia(request,XWOPSLT,FFTWRPTO):
-    url = 'https://monkfish-app-5i4nb.ondigitalocean.app/licenciasvalidar_licencia/' + str(XWOPSLT) +'/'+str("CUALQUIERCOSA")
+    url = 'https://licencias-se4vf.ondigitalocean.app//licenciasvalidar_licencia/' + str(XWOPSLT) +'/'+str("CUALQUIERCOSA")
     response = requests.get(url)
     if response.status_code == 200:
         data = response.json()
