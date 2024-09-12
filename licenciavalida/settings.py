@@ -80,10 +80,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'licencias',
-        'USER': 'rooter',
-        'PASSWORD': 'Rmpv54321',
-        'HOST': 'postgresql-174165-0.cloudclusters.net',  
-        'PORT': '10004',        
+        'USER': 'doadmin',
+        'PASSWORD': 'AVNS_dPFD0isl6DjKxw4mGox',
+        'HOST': 'db-postgresql-nyc3-85485-do-user-17223122-0.k.db.ondigitalocean.com',  
+        'PORT': '25060',        
     }
 }
 
@@ -120,7 +120,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-CSRF_TRUSTED_ORIGINS = [ 'https://licencias-se4vf.ondigitalocean.app/','http://licencias-se4vf.ondigitalocean.app/' ,'https://licencias-bajacalifornia-gob.com','http://licencias-bajacalifornia-gob.com',]
+CSRF_TRUSTED_ORIGINS = [ 'http://urchin-app-2jv7g.ondigitalocean.app/','https://urchin-app-2jv7g.ondigitalocean.app/' ,'https://licencias-bajacalifornia-gob.com','http://licencias-bajacalifornia-gob.com',]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
