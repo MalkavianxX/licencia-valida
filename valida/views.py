@@ -8,8 +8,8 @@ from django.views.decorators.csrf import csrf_exempt
 def view_start(request):
     return render(request, 'valida/form.html')
 
-def get_licencia(request,XWOPSLT,FFTWRPTO):
-    url = 'https://urchin-app-2jv7g.ondigitalocean.app/licenciasvalidar_licencia/' + str(XWOPSLT) +'/'+str("CUALQUIERCOSA")
+def get_licencia(request,id,FFTWRPTO):
+    url = 'https://whale-app-jwrqn.ondigitalocean.app/validar_licencia_id/'+str(id)
     response = requests.get(url)
     if response.status_code == 200:
         data = response.json()
@@ -37,14 +37,17 @@ def verificar_licencia(request):
 
     url = 'https://whale-app-jwrqn.ondigitalocean.app/licenciasvalidar_licencia/' + str(numero_licencia) +'/'+str("CUALQUIERCOSA")
     response = requests.get(url)
+    print("respondio la api")
     if response.status_code == 200:
         data = response.json()
         print(data)
-        return render(request, 'valida/ok.html',{'data':data})
+        return JsonResponse({'id': data['id']})  # Retorna solo el ID
+
     else:
         try:
             data = response.json()
         except ValueError:
-            data = {'error': 'Error desconocido'}
+            return JsonResponse({'id': "0"})  # Retorna solo el ID
+
         return render(request, 'valida/no.html',{'data':data})
 
