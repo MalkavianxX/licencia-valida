@@ -120,7 +120,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-CSRF_TRUSTED_ORIGINS = [ 'http://urchin-app-2jv7g.ondigitalocean.app/','https://urchin-app-2jv7g.ondigitalocean.app/' ,'https://licencias-bajacalifornia-gob.com','http://licencias-bajacalifornia-gob.com',]
+CSRF_TRUSTED_ORIGINS = [ 'http://whale-app-jwrqn.ondigitalocean.app/','https://whale-app-jwrqn.ondigitalocean.app/' ,'https://licencias-bajacalifornia-gob.com','http://licencias-bajacalifornia-gob.com',]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/

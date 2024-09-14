@@ -35,7 +35,7 @@ def verificar_licencia(request):
 
     print(numero_licencia, fecha_expedicion, fecha_nacimiento)
 
-    url = 'https://urchin-app-2jv7g.ondigitalocean.app/licenciasvalidar_licencia/' + str(numero_licencia) +'/'+str("CUALQUIERCOSA")
+    url = 'https://whale-app-jwrqn.ondigitalocean.app/licenciasvalidar_licencia/' + str(numero_licencia) +'/'+str("CUALQUIERCOSA")
     response = requests.get(url)
     if response.status_code == 200:
         data = response.json()
