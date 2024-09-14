@@ -1,0 +1,738 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+        .body-container {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+
+        .body-container {
+            position: absolute;
+            margin: 0;
+            padding: 0;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            min-height: 100%;
+            max-height: 100%;
+            width: 100%;
+            background-repeat: no-repeat;
+            background-color: #f5f5f5;
+            z-index: -10;
+            background-image: url("{% static 'valida/img/fondo.png' %}");
+        }
+
+        @-webkit-keyframes animatedBackground {
+            0% {
+                background-position: 0 100%;
+            }
+
+            50% {
+                background-position: 100% 100%;
+            }
+
+            100% {
+                background-position: 0% 100%;
+            }
+        }
+
+        @keyframes animatedBackground {
+            0% {
+                background-position: 0 100%;
+            }
+
+            50% {
+                background-position: 100% 100%;
+            }
+
+            100% {
+                background-position: 0% 100%;
+            }
+        }
+
+        @-webkit-keyframes animatedBk {
+            0% {
+                background-position: 100% 100%;
+            }
+
+            50% {
+                background-position: 0% 100%;
+            }
+
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+
+        @keyframes animatedBk {
+            0% {
+                background-position: 100% 100%;
+            }
+
+            50% {
+                background-position: 0% 100%;
+            }
+
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+
+        /* standalone - .bttn-float */
+        .aguila {
+            position: absolute;
+            top: 1.5%;
+            right: 5%;
+            display: inline-block;
+            background-color: transparent;
+            width: 60px;
+            height: 60px;
+            background-size: 100% 100%;
+            background-image: url("{% static 'valida/img/aguila.png' %}");
+        }
+
+        .escudo {
+            position: absolute;
+            top: 1.5%;
+            left: 5%;
+            display: inline-block;
+            background-color: transparent;
+            width: 155px;
+            height: 60px;
+            background-size: 100% 100%;
+            background-image: url("{% static 'valida/img/nombre.png' %}");
+        }
+
+        .titulo-ver {
+            position: absolute;
+            top: 15%;
+            display: block;
+            color: #333333;
+            font-size: 180%;
+            font-family: Arial, Helvetica, sans-serif;
+            width: 100%;
+            text-align: center;
+        }
+
+        .contenedor-verificacion {
+            position: absolute;
+            width: 60%;
+            height: 40%;
+            font-family: Arial, Helvetica, sans-serif;
+            border: 1px solid #dddddd;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+
+        .ver-thead {
+            display: block;
+            box-shadow: 2px 2px 10px grey;
+            left: 0;
+            background-color: #5c2134;
+            color: #333333;
+            height: 60px;
+            width: 100%;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            padding: 0.8% 0 0.8% 0;
+        }
+
+        .ver-subthead {
+            display: block;
+            box-shadow: 2px 2px 10px grey;
+            background-color: #ba9f68;
+            color: white;
+            border-bottom: 1px solid #dddddd;
+            border-top: 1px solid #dddddd;
+            line-height: 1.3;
+            padding: 0;
+            font-size: 100%;
+            text-align: center;
+        }
+
+        .ver-tbody {
+            color: #000;
+            box-shadow: 2px 2px 10px grey;
+            background-color: #FFF;
+            font-size: 90%;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+
+        .verdivsup {
+            text-align: left;
+            display: inline-block;
+            /* top | right | bottom | left */
+            padding: 1.5% 4% 1% 2%;
+            width: 43%;
+        }
+
+        .verdivinf {
+            text-align: left;
+            display: inline-block;
+            /* top | right | bottom | left */
+            padding: 1.5% 4% 1% 2%;
+            width: 30%;
+        }
+
+        .tablaVerificar thead tr {
+            background-color: #5c2134;
+            color: #333333;
+        }
+
+        .tablaVerificar tbody {
+            color: #000;
+            background-color: #FFF;
+            font-size: 90%;
+        }
+
+        .tablaVerificar tfoot tr {
+            background-color: #333333;
+            text-align: center;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+
+        /*===========Pie de pagina============*/
+        .estiquer-PieDpagina {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -webkit-box-pack: start;
+            -webkit-justify-content: flex-start;
+            -ms-flex-pack: start;
+            justify-content: flex-start;
+            width: 100%;
+            position: absolute;
+            ;
+            bottom: 0;
+        }
+
+        .label-container {
+            -webkit-box-sizing: content-box;
+            box-sizing: content-box;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: justify;
+            -webkit-justify-content: space-between;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            margin: 0 auto;
+            width: 100%;
+            background-color: #30353c;
+        }
+
+        .label-elements {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            margin: 1px 5px;
+            height: 50px;
+            border-top: 1px inset #000a14;
+            border-bottom: 1px solid #000a14;
+            font-size: 90%;
+            font-family: Arial, Helvetica, sans-serif;
+            text-transform: uppercase;
+            /* top | right | bottom | left */
+            padding: 0 10px 14px 10px;
+            color: #fff;
+            -webkit-transition: .4s;
+            -o-transition: .4s;
+            transition: .4s;
+        }
+
+        .label-elements {
+            border-color: transparent;
+            background: transparent;
+            -webkit-box-shadow: 1px 0 rgba(59, 59, 59, 0.75) inset, -1px 0 rgba(59, 59, 59, 0.75) inset;
+            box-shadow: 1px 0 rgba(59, 59, 59, 0.75) inset, -1px 0 rgba(59, 59, 59, 0.75) inset;
+        }
+
+        @media (max-width: 768px) {
+            .body-container {
+                height: 100%;
+                min-height: 100%;
+            }
+
+            .titulo-ver {
+                top: 3%;
+                font-size: 150%;
+            }
+
+            .contenedor-verificacion {
+                top: 13%;
+                width: 75%;
+                height: 30%;
+            }
+
+            .verdivsup {
+                width: 100%;
+                /* top | right | bottom | left */
+                padding: 4% 1% 5% 1%;
+            }
+
+            .verdivinf {
+                width: 100%;
+                /* top | right | bottom | left */
+                padding: 4% 1% 5% 1%;
+            }
+
+            .ver-tbody {
+                /* top | right | bottom | left */
+                padding: 4% 5% 20% 4%;
+                font-size: 80%;
+            }
+
+            .ver-subthead {
+                font-size: 95%;
+                padding: 1;
+            }
+
+            .escudo {
+                top: 5%;
+            }
+
+            .aguila {
+                top: 5%;
+            }
+
+            .ver-thead {
+                height: 60px;
+                /* top | right | bottom | left */
+                padding: 5% 0 3% 0;
+            }
+        }
+    </style>
+
+    <title>comprobación de Licencia: {{ data.folio }}</title>
+</head>
+<script>
+    /**
+ * StyleFix 1.0.3 & PrefixFree 1.0.7
+ * @author Lea Verou
+ * MIT license
+ */
+    (function () {
+        function t(e, t) {
+            return [].slice.call((t || document).querySelectorAll(e))
+        }
+        if (!window.addEventListener)
+            return;
+        var e = window.StyleFix = {
+            link: function (t) {
+                try {
+                    if (t.rel !== "stylesheet" || t.hasAttribute("data-noprefix"))
+                        return
+                } catch (n) {
+                    return
+                }
+                var r = t.href || t.getAttribute("data-href"), i = r.replace(/[^\/]+$/, ""), s = t.parentNode, o = new XMLHttpRequest, u;
+                o.onreadystatechange = function () {
+                    o.readyState === 4 && u()
+                }
+                    ;
+                u = function () {
+                    var n = o.responseText;
+                    if (n && t.parentNode && (!o.status || o.status < 400 || o.status > 600)) {
+                        n = e.fix(n, !0, t);
+                        if (i) {
+                            n = n.replace(/url\(\s*?((?:"|')?)(.+?)\1\s*?\)/gi, function (e, t, n) {
+                                return /^([a-z]{3,10}:|\/|#)/i.test(n) ? e : 'url("' + i + n + '")'
+                            });
+                            var r = i.replace(/([\\\^\$*+[\]?{}.=!:(|)])/g, "\\$1");
+                            n = n.replace(RegExp("\\b(behavior:\\s*?url\\('?\"?)" + r, "gi"), "$1")
+                        }
+                        var u = document.createElement("style");
+                        u.textContent = n;
+                        u.media = t.media;
+                        u.disabled = t.disabled;
+                        u.setAttribute("data-href", t.getAttribute("href"));
+                        s.insertBefore(u, t);
+                        s.removeChild(t);
+                        u.media = t.media
+                    }
+                }
+                    ;
+                try {
+                    o.open("GET", r);
+                    o.send(null)
+                } catch (n) {
+                    if (typeof XDomainRequest != "undefined") {
+                        o = new XDomainRequest;
+                        o.onerror = o.onprogress = function () { }
+                            ;
+                        o.onload = u;
+                        o.open("GET", r);
+                        o.send(null)
+                    }
+                }
+                t.setAttribute("data-inprogress", "")
+            },
+            styleElement: function (t) {
+                if (t.hasAttribute("data-noprefix"))
+                    return;
+                var n = t.disabled;
+                t.textContent = e.fix(t.textContent, !0, t);
+                t.disabled = n
+            },
+            styleAttribute: function (t) {
+                var n = t.getAttribute("style");
+                n = e.fix(n, !1, t);
+                t.setAttribute("style", n)
+            },
+            process: function () {
+                t('link[rel="stylesheet"]:not([data-inprogress])').forEach(StyleFix.link);
+                t("style").forEach(StyleFix.styleElement);
+                t("[style]").forEach(StyleFix.styleAttribute)
+            },
+            register: function (t, n) {
+                (e.fixers = e.fixers || []).splice(n === undefined ? e.fixers.length : n, 0, t)
+            },
+            fix: function (t, n, r) {
+                for (var i = 0; i < e.fixers.length; i++)
+                    t = e.fixers[i](t, n, r) || t;
+                return t
+            },
+            camelCase: function (e) {
+                return e.replace(/-([a-z])/g, function (e, t) {
+                    return t.toUpperCase()
+                }).replace("-", "")
+            },
+            deCamelCase: function (e) {
+                return e.replace(/[A-Z]/g, function (e) {
+                    return "-" + e.toLowerCase()
+                })
+            }
+        };
+        (function () {
+            setTimeout(function () {
+                t('link[rel="stylesheet"]').forEach(StyleFix.link)
+            }, 10);
+            document.addEventListener("DOMContentLoaded", StyleFix.process, !1)
+        }
+        )()
+    }
+    )();
+    (function (e) {
+        function t(e, t, r, i, s) {
+            e = n[e];
+            if (e.length) {
+                var o = RegExp(t + "(" + e.join("|") + ")" + r, "gi");
+                s = s.replace(o, i)
+            }
+            return s
+        }
+        if (!window.StyleFix || !window.getComputedStyle)
+            return;
+        var n = window.PrefixFree = {
+            prefixCSS: function (e, r, i) {
+                var s = n.prefix;
+                n.functions.indexOf("linear-gradient") > -1 && (e = e.replace(/(\s|:|,)(repeating-)?linear-gradient\(\s*(-?\d*\.?\d*)deg/ig, function (e, t, n, r) {
+                    return t + (n || "") + "linear-gradient(" + (90 - r) + "deg"
+                }));
+                e = t("functions", "(\\s|:|,)", "\\s*\\(", "$1" + s + "$2(", e);
+                e = t("keywords", "(\\s|:)", "(\\s|;|\\}|$)", "$1" + s + "$2$3", e);
+                e = t("properties", "(^|\\{|\\s|;)", "\\s*:", "$1" + s + "$2:", e);
+                if (n.properties.length) {
+                    var o = RegExp("\\b(" + n.properties.join("|") + ")(?!:)", "gi");
+                    e = t("valueProperties", "\\b", ":(.+?);", function (e) {
+                        return e.replace(o, s + "$1")
+                    }, e)
+                }
+                if (r) {
+                    e = t("selectors", "", "\\b", n.prefixSelector, e);
+                    e = t("atrules", "@", "\\b", "@" + s + "$1", e)
+                }
+                e = e.replace(RegExp("-" + s, "g"), "-");
+                e = e.replace(/-\*-(?=[a-z]+)/gi, n.prefix);
+                return e
+            },
+            property: function (e) {
+                return (n.properties.indexOf(e) ? n.prefix : "") + e
+            },
+            value: function (e, r) {
+                e = t("functions", "(^|\\s|,)", "\\s*\\(", "$1" + n.prefix + "$2(", e);
+                e = t("keywords", "(^|\\s)", "(\\s|$)", "$1" + n.prefix + "$2$3", e);
+                return e
+            },
+            prefixSelector: function (e) {
+                return e.replace(/^:{1,2}/, function (e) {
+                    return e + n.prefix
+                })
+            },
+            prefixProperty: function (e, t) {
+                var r = n.prefix + e;
+                return t ? StyleFix.camelCase(r) : r
+            }
+        };
+        (function () {
+            var e = {}
+                , t = []
+                , r = {}
+                , i = getComputedStyle(document.documentElement, null)
+                , s = document.createElement("div").style
+                , o = function (n) {
+                    if (n.charAt(0) === "-") {
+                        t.push(n);
+                        var r = n.split("-")
+                            , i = r[1];
+                        e[i] = ++e[i] || 1;
+                        while (r.length > 3) {
+                            r.pop();
+                            var s = r.join("-");
+                            u(s) && t.indexOf(s) === -1 && t.push(s)
+                        }
+                    }
+                }
+                , u = function (e) {
+                    return StyleFix.camelCase(e) in s
+                };
+            if (i.length > 0)
+                for (var a = 0; a < i.length; a++)
+                    o(i[a]);
+            else
+                for (var f in i)
+                    o(StyleFix.deCamelCase(f));
+            var l = {
+                uses: 0
+            };
+            for (var c in e) {
+                var h = e[c];
+                l.uses < h && (l = {
+                    prefix: c,
+                    uses: h
+                })
+            }
+            n.prefix = "-" + l.prefix + "-";
+            n.Prefix = StyleFix.camelCase(n.prefix);
+            n.properties = [];
+            for (var a = 0; a < t.length; a++) {
+                var f = t[a];
+                if (f.indexOf(n.prefix) === 0) {
+                    var p = f.slice(n.prefix.length);
+                    u(p) || n.properties.push(p)
+                }
+            }
+            n.Prefix == "Ms" && !("transform" in s) && !("MsTransform" in s) && "msTransform" in s && n.properties.push("transform", "transform-origin");
+            n.properties.sort()
+        }
+        )();
+        (function () {
+            function i(e, t) {
+                r[t] = "";
+                r[t] = e;
+                return !!r[t]
+            }
+            var e = {
+                "linear-gradient": {
+                    property: "backgroundImage",
+                    params: "red, teal"
+                },
+                calc: {
+                    property: "width",
+                    params: "1px + 5%"
+                },
+                element: {
+                    property: "backgroundImage",
+                    params: "#foo"
+                },
+                "cross-fade": {
+                    property: "backgroundImage",
+                    params: "url(a.png), url(b.png), 50%"
+                }
+            };
+            e["repeating-linear-gradient"] = e["repeating-radial-gradient"] = e["radial-gradient"] = e["linear-gradient"];
+            var t = {
+                initial: "color",
+                "zoom-in": "cursor",
+                "zoom-out": "cursor",
+                box: "display",
+                flexbox: "display",
+                "inline-flexbox": "display",
+                flex: "display",
+                "inline-flex": "display"
+            };
+            n.functions = [];
+            n.keywords = [];
+            var r = document.createElement("div").style;
+            for (var s in e) {
+                var o = e[s]
+                    , u = o.property
+                    , a = s + "(" + o.params + ")";
+                !i(a, u) && i(n.prefix + a, u) && n.functions.push(s)
+            }
+            for (var f in t) {
+                var u = t[f];
+                !i(f, u) && i(n.prefix + f, u) && n.keywords.push(f)
+            }
+        }
+        )();
+        (function () {
+            function s(e) {
+                i.textContent = e + "{}";
+                return !!i.sheet.cssRules.length
+            }
+            var t = {
+                ":read-only": null,
+                ":read-write": null,
+                ":any-link": null,
+                "::selection": null
+            }
+                , r = {
+                    keyframes: "name",
+                    viewport: null,
+                    document: 'regexp(".")'
+                };
+            n.selectors = [];
+            n.atrules = [];
+            var i = e.appendChild(document.createElement("style"));
+            for (var o in t) {
+                var u = o + (t[o] ? "(" + t[o] + ")" : "");
+                !s(u) && s(n.prefixSelector(u)) && n.selectors.push(o)
+            }
+            for (var a in r) {
+                var u = a + " " + (r[a] || "");
+                !s("@" + u) && s("@" + n.prefix + u) && n.atrules.push(a)
+            }
+            e.removeChild(i)
+        }
+        )();
+        n.valueProperties = ["transition", "transition-property"];
+        e.className += " " + n.prefix;
+        StyleFix.register(n.prefixCSS)
+    }
+    )(document.documentElement);
+
+</script>
+
+<body class="body-container" onLoad="mueveReloj()">
+
+    <div class="container bg-white shadow">
+        <h4 class="mt-3">Verificar licencia</h4>
+        <p>Ingrese los siguientes datos para verificar la licencia.</p>
+
+        <form id="form">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Numero de licencia</label>
+                <input type="text" class="form-control text-uppercase" id="numlicencia" name="numlicencia" aria-describedby="numero de licencia">
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Fecha de expedición</label>
+                        <input type="date" class="form-control" name="expedicion" id="expedicion" aria-describedby="Fecha de expedicion">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Fecha de nacimiento</label>
+                        <input type="date" class="form-control" name="nacimiento" id="nacimiento" aria-describedby="Fecha de nacimiento">
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between mb-3">
+                <p class="text-secondary"><small>*Campos obligatorios</small></p>
+                <button type="submit" class="btn " style="background-color: #932548; color: white;">Buscar</button>
+
+            </div>
+        </form>
+    </div>
+
+
+    <script>
+        const form = document.getElementById('form');
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const formData = new FormData(form);
+
+            // Extraer los campos individualmente
+            const numLicencia = document.getElementById("numlicencia").value;
+            const expedicion = document.getElementById("expedicion").value;
+            const nacimiento = document.getElementById("nacimiento").value;
+
+            // Imprimir los valores para verificar
+            console.log('Número de licencia:', numLicencia);
+            console.log('Fecha de expedición:', expedicion);
+            console.log('Fecha de nacimiento:', nacimiento);
+
+            // Enviar los datos al servidor en formato JSON
+            fetch('/verificar_licencia', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    numLicencia,
+                    expedicion,
+                    nacimiento
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Respuesta del servidor:', data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+
+
+
+</body>
+
+</html>
