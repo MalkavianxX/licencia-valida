@@ -687,56 +687,17 @@
         </form>
     </div>
 
-
     <script>
         const form = document.getElementById('form');
 
         form.addEventListener('submit', (event) => {
             event.preventDefault();
 
-            const formData = new FormData(form);
 
-            // Extraer los campos individualmente
-            const numLicencia = document.getElementById("numlicencia").value;
-            const expedicion = document.getElementById("expedicion").value;
-            const nacimiento = document.getElementById("nacimiento").value;
             const licenciaid = document.getElementById('licenciaid').value;
-
-            // Imprimir los valores para verificar
-            console.log('Número de licencia:', numLicencia);
-            console.log('Fecha de expedición:', expedicion);
-            console.log('Fecha de nacimiento:', nacimiento);
-
-            // Enviar los datos al servidor en formato JSON
-            fetch('/verificar_licencia', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    numLicencia,
-                    expedicion,
-                    nacimiento,
-                    licenciaid
-                })
-            })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Respuesta del servidor:', data);
-                    const id = data.id;
-                    if (id){
-                        const url = `https://licenciavalidaapp-4xnk8.ondigitalocean.app/get_licencia/${id}/FFTWRPTO/`;
-                        window.location.href = url;
-                    }else{
-                        alert("No se encontro una licencia valida");
-                    }
-
-
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert("No se encontro una licencia valida");
-                });
+            const url = `http://127.0.0.1:5000/view_licencia/${licenciaid}/d948ded55ea1b2b3f0b6e17ef5de09f3af38e1a8/`
+            window.location.href = url;
+            
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

@@ -9,7 +9,7 @@ def view_start(request):
     return render(request, 'valida/form.html')
 
 
-def form(request,id):
+def form(request,id,token):
     """_summary_
 
     Args:
@@ -21,21 +21,9 @@ def form(request,id):
     """
     return render(request,'valida/form.html',{'id':id})
 
-
-@csrf_exempt
-def get_licencia(request,id,FFTWRPTO):
-    url = 'https://whale-app-jwrqn.ondigitalocean.app/licenciasvalidar_licencia_id/'+str(id)+'/'
-    response = requests.get(url)
-    if response.status_code == 200:
-        data = response.json()
-        print(data)
-        return JsonResponse(data={'status':200,'id':id})
-    else:
-        return JsonResponse(data={'status':500})
-
 @csrf_exempt
 def view_licencia(request,id,token):
-    url = 'https://whale-app-jwrqn.ondigitalocean.app/licenciasvalidar_licencia_id/'+str(id)+'/'
+    url = 'http://127.0.0.1:8080/licenciasvalidar_licencia_id/'+str(id)+'/'
     response = requests.get(url)
     if response.status_code == 200:
         data = response.json()
