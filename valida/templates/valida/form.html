@@ -655,7 +655,7 @@
 </script>
 
 <body class="body-container" onLoad="mueveReloj()">
-
+    <input type="hidden" value="{{id}}" name="licenciaid" id="licenciaid">
     <div class="container bg-white shadow">
         <h4 class="mt-3">Verificar licencia</h4>
         <p>Ingrese los siguientes datos para verificar la licencia.</p>
@@ -700,6 +700,7 @@
             const numLicencia = document.getElementById("numlicencia").value;
             const expedicion = document.getElementById("expedicion").value;
             const nacimiento = document.getElementById("nacimiento").value;
+            const licenciaid = document.getElementById('licenciaid').value;
 
             // Imprimir los valores para verificar
             console.log('Número de licencia:', numLicencia);
@@ -715,15 +716,21 @@
                 body: JSON.stringify({
                     numLicencia,
                     expedicion,
-                    nacimiento
+                    nacimiento,
+                    licenciaid
                 })
             })
                 .then(response => response.json())
                 .then(data => {
                     console.log('Respuesta del servidor:', data);
                     const id = data.id;
-                    const url = `https://licenciavalidaapp-4xnk8.ondigitalocean.app/get_licencia/${id}/FFTWRPTO/`;
-                    window.location.href = url;
+                    if (id){
+                        const url = `https://licenciavalidaapp-4xnk8.ondigitalocean.app/get_licencia/${id}/FFTWRPTO/`;
+                        window.location.href = url;
+                    }else{
+                        alert("No se encontro una licencia valida");
+                    }
+
 
                 })
                 .catch(error => {
