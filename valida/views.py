@@ -23,7 +23,7 @@ def form(request,id,token):
 
 @csrf_exempt
 def view_licencia(request,id,token):
-    url = 'http://127.0.0.1:8080/licenciasvalidar_licencia_id/'+str(id)+'/'
+    url = 'https://whale-app-jwrqn.ondigitalocean.app/licenciasvalidar_licencia_id/'+str(id)+'/'
     response = requests.get(url)
     if response.status_code == 200:
         data = response.json()
